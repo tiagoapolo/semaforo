@@ -7,11 +7,27 @@ app.get('/', function(req, res){
 });
 
 app.get('/timestamp', function(req, res){
-    res.send(Date.parse(new Date()).toString())
+    // Date.parse(new Date()).toString()
+
+
+    let options = { timeZone: "America/Sao_Paulo"}, // you have to know that New York in EST
+    estTime = new Date();
+
+    res.send(Date.parse(estTime.toLocaleString("en-US", options)).toString())
+    
 });
 
 app.get('/datetime', function(req, res){
-    res.send(Date().toString())
+   
+
+    let options = { timeZone: "America/Sao_Paulo"}, // you have to know that New York in EST
+    estTime = new Date();
+
+    res.send(estTime.toString())
+
+
 });
 
-app.listen(8081);
+var listener = app.listen(process.env.PORT || 8081, function(){
+    console.log('! Listening on port ' + listener.address().port); //Listening on port 8888
+});
