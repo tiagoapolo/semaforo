@@ -14,7 +14,6 @@ app.get('/timestamp', function(req, res){
     var estTime = new Date(); // create a new date object for the EST time
     estTime.setHours(utcTime-3)
 
-
     res.send(Date.parse(estTime).toString())
     
 });
