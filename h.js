@@ -5,8 +5,6 @@ var p = generateP()
 var q = generateQ()
 console.log('kParam: ', kParam)
 
-sendData()
-
 
 function applyWatchError(){
     date = new Date(new Date(date).setSeconds(new Date(date).getSeconds() - 3))
