@@ -6,9 +6,8 @@ var q = generateQ()
 console.log('kParam: ', kParam)
 
 
-
 function applyWatchError(){
-    date = new Date(new Date(date).setSeconds(new Date(date).getSeconds() - 3))
+    date = new Date(new Date(date).setSeconds(new Date(date).getSeconds() + 6))
 }
 
 
@@ -47,14 +46,29 @@ function adjustTime() {
 function sendData(){
 
     console.log('Sending...' + '\nP: '+p+'\nQ: '+q)
-    // rp('https://horadobrasil.herokuapp.com/timestamp')
-    // .then((value) => { 
-    //     console.log('Data sent!', value)
-    // })
-    // .catch((err) => {
-    //     // Crawling failed...
-    //     console.log(err)
-    // });
+
+    var options = {
+        method: 'POST',
+        uri: 'http://localhost:8085/',
+        form: {
+            // Like <input type="text" name="name">
+            t: 'v',
+            p: p,
+            q: q
+        },
+        json: true // Automatically stringifies the body to JSON
+    };
+
+    rp(options)
+    .then((value) => { 
+        console.log('Data sent!', value)
+    })
+    .catch((err) => {
+        // Crawling failed...
+        console.log(err)
+    });
+
+
 }
 
 
@@ -71,6 +85,18 @@ function sendData(){
     }, rand);
 
 }());
+
+
+// (function deliver() {
+//     let count = 1
+//     let rand = (6*60000 * count) - 1*60000
+
+//     setTimeout(function() {
+//             sendData();
+//             deliver();  
+//     }, rand);
+
+// }());
 
 
 setInterval(applyWatchError, 1000)
