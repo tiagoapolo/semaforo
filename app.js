@@ -9,11 +9,13 @@ app.get('/', function(req, res){
 app.get('/timestamp', function(req, res){
     // Date.parse(new Date()).toString()
 
+    var localTime = new Date(); //get your local time
+    var utcTime = localTime.getUTCHours(); // find UTC hours
+    var estTime = new Date(); // create a new date object for the EST time
+    estTime.setHours(utcTime-3)
 
-    let options = { timeZone: "America/Sao_Paulo"}, // you have to know that New York in EST
-    estTime = new Date();
 
-    res.send(Date.parse(estTime.toLocaleString("pt-BR", options)).toString())
+    res.send(Date.parse(estTime).toString())
     
 });
 
