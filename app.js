@@ -12,9 +12,9 @@ app.get('/timestamp', function(req, res){
     var localTime = new Date(); //get your local time
     var utcTime = localTime.getUTCHours(); // find UTC hours
     var estTime = new Date(); // create a new date object for the EST time
-    estTime.setHours(utcTime-3)
+    estTime.setHours(utcTime)
 
-    res.send(Date.parse(estTime).toString())
+    res.send(new Date.parse(estTime).toString())
     
 });
 
