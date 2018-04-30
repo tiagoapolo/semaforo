@@ -85,7 +85,7 @@ function sendData(){
 // setInterval(sendData, (Math.floor(Math.random() * 50000) + 5000))
 
 
-
+sendData()
 
 (function deliver() {
     let count = 1
