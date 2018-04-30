@@ -8,6 +8,8 @@ console.log('kParam: ', kParam)
 
 function applyWatchError(){
     date = new Date(new Date(date).setSeconds(new Date(date).getSeconds() - 3))
+
+    console.log('Delayed Time: ', date)
 }
 
 
