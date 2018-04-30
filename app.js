@@ -1,5 +1,3 @@
-var express = require('express');
-var app = express();
 var rp = require('request-promise-native');
 var date = new Date()
 var kParam = process.argv[2]
@@ -7,10 +5,6 @@ var p = generateP()
 var q = generateQ()
 console.log('kParam: ', kParam)
 
-
-var listener = app.listen(process.env.PORT || 8081, function(){
-    console.log('! Listening on port ' + listener.address().port); //Listening on port 8888
-});
 
 
 function applyWatchError(){
@@ -68,12 +62,14 @@ function sendData(){
 
 
 (function loop() {
+    
     var rand = (Math.floor(Math.random() * 45000) + 5000)
-    console.log('TIMEL', rand)
+
     setTimeout(function() {
             sendData();
             loop();  
     }, rand);
+
 }());
 
 
