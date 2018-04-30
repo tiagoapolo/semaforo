@@ -116,6 +116,10 @@ setInterval(() => {
 
 // }, 120000)
 
+app.get('/', (req, res) => {
+    res.send('LOGS')
+})
+
 
 app.post('/', function (req, res) {
     obj[req.body.t]["p"] = req.body.p
