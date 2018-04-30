@@ -49,7 +49,7 @@ function sendData(){
 
     var options = {
         method: 'POST',
-        uri: 'http://localhost:8085/',
+        uri: 'https://semaforos.herokuapp.com/',
         form: {
             // Like <input type="text" name="name">
             t: 'h',
