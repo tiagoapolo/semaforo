@@ -13,7 +13,7 @@ app.get('/timestamp', function(req, res){
     let options = { timeZone: "America/Sao_Paulo"}, // you have to know that New York in EST
     estTime = new Date();
 
-    res.send(Date.parse(estTime.toLocaleString("en-US", options)).toString())
+    res.send(Date.parse(estTime.toLocaleString("pt-BR", options)).toString())
     
 });
 
@@ -23,7 +23,7 @@ app.get('/datetime', function(req, res){
     let options = { timeZone: "America/Sao_Paulo"}, // you have to know that New York in EST
     estTime = new Date();
 
-    res.send(estTime.toString())
+    res.send(estTime.toLocaleString("pt-BR", options))
 
 
 });
