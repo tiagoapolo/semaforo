@@ -6,8 +6,13 @@ var q = generateQ()
 console.log('kParam: ', kParam)
 
 
+sendData()
+
 function applyWatchError(){
+    
     date = new Date(new Date(date).setSeconds(new Date(date).getSeconds() + 6))
+
+    console.log('Delayed Time: ', date)
 }
 
 
@@ -22,6 +27,9 @@ function generateQ(){
 
 function adjustTime() {
     
+
+    console.log('Current Time: ', date)
+
     let now = new Date().getSeconds()
 
     rp('https://horadobrasil.herokuapp.com/timestamp')
@@ -35,7 +43,9 @@ function adjustTime() {
         
         date = newDate
 
-        console.log(newDate)
+
+
+        console.log('Adjusted Time: ', date)
     })
     .catch((err) => {
         // Crawling failed...
@@ -75,28 +85,18 @@ function sendData(){
 // setInterval(sendData, (Math.floor(Math.random() * 50000) + 5000))
 
 
-(function loop() {
-    
-    var rand = (Math.floor(Math.random() * 45000) + 5000)
 
+
+(function deliver() {
+    let count = 1
+    let rand = ((6*60000 * count) - 1*60000) +  (Math.floor(Math.random() * 45000) + 5000)
     setTimeout(function() {
             sendData();
-            loop();  
+
+            deliver();  
     }, rand);
 
 }());
-
-
-// (function deliver() {
-//     let count = 1
-//     let rand = (6*60000 * count) - 1*60000
-
-//     setTimeout(function() {
-//             sendData();
-//             deliver();  
-//     }, rand);
-
-// }());
 
 
 setInterval(applyWatchError, 1000)
